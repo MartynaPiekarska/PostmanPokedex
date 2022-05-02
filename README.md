@@ -21,6 +21,8 @@ Postman collection with Pokemon json file will help you to understand and write 
 - Go back to CMD and start JSON Server
 ``json-server --watch pokedex.json``
 
+**3. Postman**
+- Import poke-collection to your Postman
 
 
 ## **Results**
