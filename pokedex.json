@@ -1,0 +1,61 @@
+{
+  "pokedex": [
+    {
+      "id": 1,
+      "pokemon": "Pikachu",
+      "type": "electric"
+    },
+    {
+      "id": 2,
+      "pokemon": "Bulbasaur",
+      "type": "grass",
+      "superpower": "poison"
+    },
+    {
+      "id": 3,
+      "pokemon": "Charmander",
+      "type": "fire"
+    },
+    {
+      "id": 4,
+      "pokemon": "Squirtle",
+      "type": "water"
+    },
+    {
+      "id": 5,
+      "pokemon": "Butterfree",
+      "type": "bug",
+      "superpower": "flying"
+    },
+    {
+      "id": 6,
+      "pokemon": "Jigglypuff",
+      "type": "normal",
+      "superpower": "fairy"
+    },
+    {
+      "id": 7,
+      "pokemon": "Psyduck",
+      "type": "water"
+    },
+    {
+      "id": 8,
+      "pokemon": "Mankey",
+      "type": "fighting"
+    },
+    {
+      "id": 9,
+      "pokemon": "Abra",
+      "type": "psychic"
+    },
+    {
+      "id": 10,
+      "pokemon": "Gastly",
+      "type": "ghost",
+      "superpower": "poison"
+    }
+  ],
+  "pokeowner": {
+    "name": "Martyna"
+  }
+}

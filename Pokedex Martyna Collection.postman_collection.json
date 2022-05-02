@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "973f3940-e3ce-46d5-8a52-53c67eeb200b",
+		"name": "Pokedex Martyna Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 60ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(60);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/pokedex",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the n-th one (path params)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/pokedex/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put edit entire resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"spoon\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n      \"id\": 9,\r\n      \"pokemon\": \"Kadabra\",\r\n      \"type\": \"psychic\",\r\n      \"superpower\": \"spoon\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pokedex/9",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put edit entire resource (dynamic variables)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n      \"id\": 6,\r\n      \"pokemon\": \"{{$randomDomainWord}}\",\r\n      \"type\": \"{{$randomVerb}}\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pokedex/6",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new pokemon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var postId = pm.response.json().id;\r",
+							"pm.environment.set(\"postId\", postId);\r",
+							"\r",
+							"console.log(postId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pokemon\": \"Eevee\",\r\n    \"type\": \"normal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pokedex",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch edit partial data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check pokemon name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.pokemon).to.eql(\"Jolteon\");\r",
+							"    console.log(jsonData.id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n      \"pokemon\": \"Jolteon\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pokedex/{{postId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex",
+						"{{postId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete pokemon",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"Set new id; value before:\")\r",
+							"console.log(pm.environment.get(\"id\"));\r",
+							"\r",
+							"pm.environment.set(\"id\", \"11\");\r",
+							"console.log(\"After:\")\r",
+							"console.log(pm.environment.get(\"id\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/pokedex/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by id (query params)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/pokedex?id=3&id=4",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by type (query params)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/pokedex?type=water",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pokedex"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "water"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Collection successful request\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+					"});"
+				]
+			}
+		}
+	]
+}
