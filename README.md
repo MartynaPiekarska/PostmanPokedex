@@ -2,7 +2,7 @@
 
 ## **About the project**
 
-Postman collection with Pokemon json file will help you to understand and write the responses of a request from Postman. Contains basic methods, global variables, environment configuration, path and query params, dynamic variables, pre-request scripts and tests scripts written in JavaScript. And BTW it will bring back good childhood memories with Pokemon Indigo League..
+Postman collection with Pokemon json file will help you to understand API testing and write the responses of a request from Postman. Contains basic methods, global variables, environment configuration, path and query params, dynamic variables, pre-request scripts and tests scripts written in JavaScript. And BTW it will bring back good childhood memories with Pokemon Indigo League..
 
 
 ## **Getting Started**
