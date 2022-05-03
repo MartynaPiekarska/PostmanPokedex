@@ -10,19 +10,19 @@ Postman collection with Pokemon json file will help you to understand API testin
 **1. Node.js**
 - Download installer from [Nodejs.org](https://nodejs.org/)
 
-**2. Fake API**
-- Go to [GitHub Typicode JSON-Server](https://github.com/typicode/json-server#getting-started)
+**2. Fake API** [GitHub Typicode JSON-Server](https://github.com/typicode/json-server#getting-started)
 - Open CMD
 - Install JSON Server
 ``npm install -g json-server``
 
-- Put downloaded file from this repository **pokedex.json** to the same place where you installed json-server
+- Put downloaded file from this repository **pokedex.json** into the same folder where you installed json-server
 
 - Go back to CMD and start JSON Server
 ``json-server --watch pokedex.json``
 
 **3. Postman**
 - Import poke-collection to your Postman
+- Run collection and watch the results
 
 
 ## **Results**
